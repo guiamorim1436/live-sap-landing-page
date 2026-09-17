@@ -1,0 +1,11 @@
+{
+  "name": "live-sap-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Clone 100% fiel da Landing Page Live SAP com integração de API via Vercel Serverless Functions",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "npx serve ."
+  },
+  "keywords": ["landing-page", "sap", "vercel", "lead-capture"]
+}

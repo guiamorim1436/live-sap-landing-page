@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#002655">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Primeiros Passos no SAP S/4HANA - Live Gratuita</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Raleway:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #333333;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.42857;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      vertical-align: middle;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Bricks Grid & Containers */
+    .bricks--page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .bricks--section {
+      width: 100%;
+    }
+
+    .bricks--section > div.section-container {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .bricks--row {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+      .bricks--row {
+        flex-flow: row nowrap;
+      }
+    }
+
+    .bricks--column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Section with Hero Background */
+    #rd-section-hero {
+      background-image: linear-gradient(to bottom, rgba(0,38,85,0.8) 0%, rgba(0,38,85,0.8) 100%), url('https://d335luupugsy2.cloudfront.net/cms/files/633485/1789570976/$w9oj6e32z9s');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-bottom: 40px;
+    }
+
+    /* Counter Bar */
+    .counter-bar-wrapper {
+      background-color: rgba(3,25,45,0.48);
+      border-radius: 8px;
+      margin-top: 20px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #rd-counter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 501px;
+      margin: 15px 0;
+      gap: 15px;
+    }
+
+    .counter-column {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0px;
+      align-items: center;
+    }
+
+    .counter-column span.value {
+      color: #a9d9ef;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 44px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .counter-column span.label {
+      color: #60c8dc;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* Left Column Content */
+    .hero-content {
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      .hero-content {
+        padding: 20px 30px;
+        align-items: flex-start;
+      }
+    }
+
+    .badge-live {
+      background-color: #ff7400;
+      border-radius: 100px;
+      padding: 6px 24px;
+      max-width: 255px;
+      margin: 10px 0 15px 0;
+      text-align: center;
+      align-self: center;
+    }
+
+    .badge-live span {
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: rgb(190, 242, 255);
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 767px) {
+      .hero-title {
+        font-size: 32px;
+      }
+    }
+
+    .hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 1.35;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 400;
+      width: 100%;
+    }
+
+    .highlight-hours {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: rgb(190, 242, 255);
+      text-align: center;
+      line-height: 1.2;
+      margin: 15px 0;
+      width: 100%;
+    }
+
+    .highlight-hours span {
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    .hero-desc {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.4;
+      text-align: center;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    /* Right Column: Form Box */
+    .form-container-box {
+      background-color: #101C28;
+      border: 1px solid #4b5677;
+      border-radius: 20px;
+      padding: 30px 25px;
+      max-width: 460px;
+      width: 100%;
+      margin: 20px auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .form-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .form-title .orange {
+      color: #ff7400;
+    }
+
+    .form-title .white {
+      color: #ffffff;
+    }
+
+    .form-meta {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #ffffff;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Form Fields Styling */
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -6px;
+    }
+
+    .form-group {
+      padding: 6px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 520px) {
+      .form-group {
+        width: 100%;
+      }
+    }
+
+    .form-group label {
+      color: #ffffff;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      color: #333333;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;
+      height: 36px;
+      padding: 0 10px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      box-shadow: inset 0px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .form-input:focus {
+      border-color: #ff7400;
+    }
+
+    /* Phone with Flag */
+    .phone-input-wrapper {
+      display: flex;
+      width: 100%;
+    }
+
+    .country-flag-box {
+      width: 48px;
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .country-flag-box svg {
+      width: 24px;
+      height: 16px;
+      border-radius: 2px;
+    }
+
+    .phone-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      flex: 1;
+    }
+
+    .terms-text {
+      color: #FFFFFF;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 12px;
+      line-height: 1.35;
+      margin-top: 14px;
+    }
+
+    .btn-submit {
+      background-color: #ff7400;
+      color: #ffffff;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      height: 52px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: background-color 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(255, 116, 0, 0.4);
+    }
+
+    .btn-submit:hover {
+      background-color: #e56800;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-feedback {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-family: 'Source Sans Pro', sans-serif;
+      display: none;
+    }
+
+    .form-feedback.success {
+      color: #69c15b;
+      display: block;
+    }
+
+    .form-feedback.error {
+      color: #ff5252;
+      display: block;
+    }
+
+    /* Second Section: Domine o SAP S/4HANA */
+    #rd-section-features {
+      padding: 60px 0;
+      background-color: #ffffff;
+    }
+
+    .feature-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+
+    .feature-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #1f2937;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-list li .check-icon {
+      color: #69c15b;
+      font-weight: 700;
+      font-size: 20px;
+      margin-right: 12px;
+    }
+
+    .feature-img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .feature-img-wrapper img {
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      max-width: 436px;
+      width: 100%;
+    }
+
+    /* Third Section: O que você vai aprender */
+    #rd-section-curriculum {
+      background-color: #0e1f34;
+      padding: 60px 0 50px 0;
+    }
+
+    .section-headline {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-headline h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .section-headline p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #b8cad9;
+    }
+
+    .section-headline p strong {
+      color: #ffffff;
+    }
+
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -15px;
+    }
+
+    .curriculum-card {
+      flex: 1 1 300px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .curriculum-card .icon-box {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .curriculum-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .curriculum-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: #d1d5db;
+      line-height: 1.45;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    /* Fourth Section: Depoimentos */
+    #rd-section-testimonials {
+      background-color: #222f3f;
+      padding: 60px 0 50px 0;
+    }
+
+    .testimonials-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -15px;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      flex: 1 1 280px;
+      max-width: 320px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+
+    .testimonial-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-stars {
+      color: #ffc606;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .testimonial-stars .white-star {
+      color: #ffffff;
+    }
+
+    .testimonial-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-style: italic;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+
+    .testimonial-author {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 15px;
+      width: 100%;
+    }
+
+    .testimonial-role {
+      font-family: 'Montserrat', sans-serif;
+      color: #9ca3af;
+      font-size: 13px;
+      width: 100%;
+    }
+
+    /* Footer Section */
+    #rd-section-footer {
+      background-color: #204573;
+      padding: 30px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-logo {
+      max-width: 144px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bricks--page">
+    
+    <!-- SEÇÃO HERO (TOPO) -->
+    <section id="rd-section-hero" class="bricks--section">
+      <div class="section-container">
+        
+        <!-- Contador Regressivo -->
+        <div class="counter-bar-wrapper">
+          <div id="rd-counter">
+            <div class="counter-column">
+              <span class="value" id="c-days">00</span>
+              <span class="label">dias</span>
+            </div>
+            <div class="counter-column">
+              <span class="value" id="c-hours">00</span>
+              <span class="label">horas</span>
+            </div>
+            <div class="counter-column">
+              <span class="value" id="c-minutes">00</span>
+              <span class="label">minutos</span>
+            </div>
+            <div class="counter-column">
+              <span class="value" id="c-seconds">00</span>
+              <span class="label">segundos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Principal Hero -->
+        <div class="bricks--row" style="margin-top: 25px;">
+          
+          <!-- Coluna Esquerda: Informações -->
+          <div class="bricks--column" style="flex: 6 0 0;">
+            <div class="hero-content">
+              <!-- Logo Topo -->
+              <div style="text-align: center; margin-bottom: 25px;">
+                <img src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789581922/$k809zgsrah" alt="Logo" style="max-width: 329px; width: 100%;">
+              </div>
+
+              <!-- Badge Live Gratuita -->
+              <div class="badge-live">
+                <span>LIVE GRATUITA</span>
+              </div>
+
+              <!-- Título -->
+              <h1 class="hero-title">
+                Primeiros Passos<br>no SAP S/4HANA:
+              </h1>
+
+              <!-- Subtítulo -->
+              <h2 class="hero-subtitle">
+                Entenda como uma empresa funciona no SAP e acompanhe o processo de compras, da requisição à fatura.
+              </h2>
+
+              <!-- Separador / Ícones -->
+              <div style="text-align: center; margin: 10px 0;">
+                <img src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789587270/$pnwx3uu1c3b" alt="Divisor" style="max-width: 420px; width: 100%;">
+              </div>
+
+              <!-- Destaque 4 Horas -->
+              <div class="highlight-hours">
+                4 horas de conteúdo<br>
+                <span>para você iniciar sua carreira em SAP.</span>
+              </div>
+
+              <!-- Separador 2 -->
+              <div style="text-align: center; margin: 10px 0;">
+                <img src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789587270/$pnwx3uu1c3b" alt="Divisor" style="max-width: 420px; width: 100%;">
+              </div>
+
+              <!-- Descrição -->
+              <p class="hero-desc">
+                Tenha sua primeira experiência prática com SAP S/4HANA e descubra como funciona um processo real de compras dentro do sistema.
+              </p>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Formulário de Inscrição -->
+          <div class="bricks--column" style="flex: 6 0 0;">
+            <div class="form-container-box">
+              <h3 class="form-title">
+                <span class="orange">Cadastre-se</span> <span class="white">e garanta sua vaga <u>gratuitamente!</u></span>
+              </h3>
+              <p class="form-meta">
+                📅 9 de Outubro 🕐 9:00 às 13:00 💻 Online
+              </p>
+
+              <form id="lead-form">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="f-name">Nome*</label>
+                    <input type="text" id="f-name" name="name" class="form-input" placeholder="Nome *" required autocomplete="name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f-email">Email*</label>
+                    <input type="email" id="f-email" name="email" class="form-input" placeholder="Email *" required autocomplete="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f-company">Empresa*</label>
+                    <input type="text" id="f-company" name="company" class="form-input" placeholder="Empresa *" required autocomplete="organization">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f-job">Cargo*</label>
+                    <input type="text" id="f-job" name="job_title" class="form-input" placeholder="Cargo *" required autocomplete="organization-title">
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="f-phone">Celular*</label>
+                    <div class="phone-input-wrapper">
+                      <div class="country-flag-box" title="Brasil (+55)">
+                        <svg viewBox="0 0 720 504">
+                          <rect width="720" height="504" fill="#009c3b"/>
+                          <polygon points="360,42 672,252 360,462 48,252" fill="#ffdf00"/>
+                          <circle cx="360" cy="252" r="126" fill="#002776"/>
+                          <path d="M 234 252 A 126 126 0 0 1 486 252" fill="none" stroke="#ffffff" stroke-width="15"/>
+                        </svg>
+                      </div>
+                      <input type="tel" id="f-phone" name="mobile_phone" class="form-input phone-input" placeholder="(11) 99999-9999" required autocomplete="tel">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f-city">Cidade*</label>
+                    <input type="text" id="f-city" name="city" class="form-input" placeholder="Cidade *" required autocomplete="address-level2">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="f-moment">Momento profissional</label>
+                    <input type="text" id="f-moment" name="cf_momento_profissional" class="form-input" placeholder="Momento profissional">
+                  </div>
+                </div>
+
+                <div class="terms-text">
+                  Ao preencher o formulário, você está ciente que podemos, de tempos em tempos, enviar comunicações e conteúdos de acordo com os seus interesses. Você pode modificar as suas permissões a qualquer tempo através da nossa Central de Suporte.
+                </div>
+
+                <button type="submit" id="btn-submit" class="btn-submit">
+                  QUERO PARTICIPAR GRATUITAMENTE
+                </button>
+
+                <div id="form-feedback" class="form-feedback"></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: DOMINE O SAP S/4HANA -->
+    <section id="rd-section-features" class="bricks--section">
+      <div class="section-container">
+        <div class="bricks--row" style="align-items: center;">
+          
+          <div class="bricks--column" style="flex: 6 0 0; padding: 20px 25px;">
+            <h2 class="feature-title">Domine o SAP S/4HANA</h2>
+            <p class="feature-desc">
+              Aprenda a utilizar a plataforma mais avançada de gestão empresarial do mundo. Veja como grandes empresas estão transformando seus processos com SAP S/4HANA.
+            </p>
+            <ul class="feature-list">
+              <li><span class="check-icon">✓</span> Interface moderna e intuitiva</li>
+              <li><span class="check-icon">✓</span> Analytics em tempo real</li>
+              <li><span class="check-icon">✓</span> Processos automatizados</li>
+              <li><span class="check-icon">✓</span> Integração com IA</li>
+            </ul>
+          </div>
+
+          <div class="bricks--column" style="flex: 6 0 0;">
+            <div class="feature-img-wrapper">
+              <img loading="lazy" src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789570976/$29tknfk4i8h" alt="Interface SAP S/4HANA">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: O QUE VOCÊ VAI APRENDER -->
+    <section id="rd-section-curriculum" class="bricks--section">
+      <div class="section-container">
+        <div class="section-headline">
+          <h2>O que você vai aprender</h2>
+          <p><strong>4 horas intensivas</strong> de conteúdo prático com especialista certificado.</p>
+        </div>
+
+        <div class="cards-row">
+          <div class="curriculum-card">
+            <div class="icon-box">🎯</div>
+            <h4>Fundamentos<br>SAP S/4HANA</h4>
+            <p>Visão completa da plataforma e suas vantagens competitivas</p>
+          </div>
+
+          <div class="curriculum-card">
+            <div class="icon-box">☁️</div>
+            <h4>SAP Business<br>Technology Platform</h4>
+            <p>Arquitetura, integração e os 5 pilares da plataforma de nuvem da SAP</p>
+          </div>
+
+          <div class="curriculum-card">
+            <div class="icon-box">⚡</div>
+            <h4>Workshop<br>Prático</h4>
+            <p>Simulações e exercícios práticos de implementação</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: DEPOIMENTOS -->
+    <section id="rd-section-testimonials" class="bricks--section">
+      <div class="section-container">
+        <div class="section-headline">
+          <h2>Depoimentos de Participantes</h2>
+        </div>
+
+        <div class="testimonials-row">
+          <!-- Depoimento 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img loading="lazy" src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789655983/$grlb79rsiu" alt="Paulo Guimarães">
+            </div>
+            <div class="testimonial-stars">★★★★<span class="white-star">★</span></div>
+            <p class="testimonial-quote">"Conteúdo excepcional! Consegui implementar as técnicas de IA no nosso SAP em apenas 2 semanas."</p>
+            <div class="testimonial-author">Paulo Guimarães</div>
+            <div class="testimonial-role">CTO</div>
+          </div>
+
+          <!-- Depoimento 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img loading="lazy" src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789655983/$chuxxvmphvl" alt="Sara Ávila">
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Workshop superou todas as expectativas. Material prático e instrutores experientes."</p>
+            <div class="testimonial-author">Sara Ávila</div>
+            <div class="testimonial-role">Gerente de TI</div>
+          </div>
+
+          <!-- Depoimento 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">
+              <img loading="lazy" src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789655983/$3qmq9g3f0ny" alt="Cláudia Castro">
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"A visita presencial e conversa com a consultora tirou todas as minhas dúvidas e agora tenho a certeza de que fiz uma boa decisão.."</p>
+            <div class="testimonial-author">Cláudia Castro</div>
+            <div class="testimonial-role">Gerente de TI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: RODAPÉ -->
+    <section id="rd-section-footer" class="bricks--section">
+      <div class="footer-logo">
+        <img loading="lazy" src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789662998/$o14yzxje8m" alt="Trainning Education">
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // 1. Cronômetro Regressivo
+    document.addEventListener("DOMContentLoaded", function() {
+      const SEC = 1000;
+      const MIN = 60 * SEC;
+      const HR = 60 * MIN;
+      const DAY = 24 * HR;
+
+      const dayElement = document.getElementById("c-days");
+      const hourElement = document.getElementById("c-hours");
+      const minuteElement = document.getElementById("c-minutes");
+      const secondElement = document.getElementById("c-seconds");
+
+      // Data alvo
+      const targetDate = new Date("2026-10-03T09:00:00-03:00").getTime();
+
+      function updateCounter() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          dayElement.textContent = "00";
+          hourElement.textContent = "00";
+          minuteElement.textContent = "00";
+          secondElement.textContent = "00";
+          return;
+        }
+
+        const days = String(Math.floor(diff / DAY)).padStart(2, '0');
+        const hours = String(Math.floor((diff % DAY) / HR)).padStart(2, '0');
+        const minutes = String(Math.floor((diff % HR) / MIN)).padStart(2, '0');
+        const seconds = String(Math.floor((diff % MIN) / SEC)).padStart(2, '0');
+
+        dayElement.textContent = days;
+        hourElement.textContent = hours;
+        minuteElement.textContent = minutes;
+        secondElement.textContent = seconds;
+      }
+
+      updateCounter();
+      setInterval(updateCounter, 1000);
+
+      // 2. Máscara de Telefone
+      const phoneInput = document.getElementById("f-phone");
+      phoneInput.addEventListener("input", function(e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        if (!x[2]) {
+          e.target.value = x[1] ? `(${x[1]}` : '';
+        } else {
+          e.target.value = `(${x[1]}) ${x[2]}` + (x[3] ? `-${x[3]}` : '');
+        }
+      });
+
+      // 3. Submissão do Formulário para a API da Vercel
+      const form = document.getElementById("lead-form");
+      const submitBtn = document.getElementById("btn-submit");
+      const feedback = document.getElementById("form-feedback");
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = "ENVIANDO...";
+        feedback.className = "form-feedback";
+        feedback.style.display = "none";
+
+        const formData = {
+          name: document.getElementById("f-name").value,
+          email: document.getElementById("f-email").value,
+          company: document.getElementById("f-company").value,
+          job_title: document.getElementById("f-job").value,
+          mobile_phone: document.getElementById("f-phone").value,
+          city: document.getElementById("f-city").value,
+          cf_momento_profissional: document.getElementById("f-moment").value,
+          source: "Landing Page Live SAP",
+          submitted_at: new Date().toISOString()
+        };
+
+        try {
+          const response = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success !== false) {
+            feedback.textContent = "✓ Inscrição realizada com sucesso! Redirecionando...";
+            feedback.className = "form-feedback success";
+            submitBtn.textContent = "INSCRIÇÃO CONFIRMADA!";
+            form.reset();
+
+            // Se houver redirect configurado
+            if (result.redirect_url) {
+              setTimeout(() => {
+                window.location.href = result.redirect_url;
+              }, 1500);
+            }
+          } else {
+            throw new Error(result.message || "Erro ao processar inscrição.");
+          }
+        } catch (error) {
+          feedback.textContent = error.message || "Ocorreu um erro ao enviar. Tente novamente.";
+          feedback.className = "form-feedback error";
+          submitBtn.disabled = false;
+          submitBtn.textContent = "QUERO PARTICIPAR GRATUITAMENTE";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
