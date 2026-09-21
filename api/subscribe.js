@@ -48,6 +48,16 @@ export default async function handler(req, res) {
     // Telefone sanitizado (apenas números)
     const cleanPhone = mobile_phone.replace(/\D/g, '');
 
+    // Observações formatadas com dados do lead
+    const observacoesTexto = [
+      `Nome: ${name.trim()}`,
+      company ? `Empresa: ${company.trim()}` : null,
+      `Telefone: ${cleanPhone}`,
+      cf_momento_profissional ? `Momento da carreira: ${cf_momento_profissional.trim()}` : null,
+      job_title ? `Cargo: ${job_title.trim()}` : null,
+      city ? `Cidade: ${city.trim()}` : null
+    ].filter(Boolean).join('\n');
+
     // Payload estruturado exatamente conforme as especificações do CRM
     const crmPayload = {
       nome: name.trim(),
@@ -58,15 +68,18 @@ export default async function handler(req, res) {
       sede_cidade: (city || '').trim(),
       seniority: (cf_momento_profissional || '').trim(),
       curso_interesse: "SAP S/4HANA",
-      course_format: "Mentorado (Ao Vivo)",
+      course_format: "",
       form_name: "Inscrição Live SAP S/4HANA",
-      origem: utm_source || "landing-page",
+      origem: utm_source || "LP Live SAP S/4HANA",
+      observacoes: observacoesTexto,
+      obs: observacoesTexto,
+      notes: observacoesTexto,
       tags: [
         "live-sap",
         "landing-page",
         ...(utm_campaign ? [utm_campaign] : [])
       ],
-      utm_source: utm_source || undefined,
+      utm_source: utm_source || "LP Live SAP S/4HANA",
       utm_medium: utm_medium || undefined,
       utm_campaign: utm_campaign || undefined,
       utm_content: utm_content || undefined,

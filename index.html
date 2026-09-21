@@ -979,6 +979,10 @@
         }
       });
 
+      if (!utmData.utm_source) {
+        utmData.utm_source = "LP Live SAP S/4HANA";
+      }
+
       // 4. Submissão do Formulário para a API da Vercel
       const form = document.getElementById("lead-form");
       const submitBtn = document.getElementById("btn-submit");
