@@ -86,8 +86,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       message: 'Inscrição realizada com sucesso!',
-      // Se quiser redirecionar para um link externo após o cadastro, defina redirect_url:
-      redirect_url: process.env.REDIRECT_AFTER_SUBMIT_URL || null
+      // Redireciona para a página de confirmação/agradecimento:
+      redirect_url: process.env.REDIRECT_AFTER_SUBMIT_URL || '/obrigado.html'
     });
 
   } catch (error) {

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#061630">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Inscrição confirmada | Live SAP</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: #102847;
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      background: #eef7fc;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    /* Background e Container da Página de Confirmação */
+    .sap-confirm-page {
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 18px 60px;
+      position: relative;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(37,201,232,.42), transparent 29rem),
+        radial-gradient(circle at 94% 93%, rgba(19,96,166,.55), transparent 34rem),
+        linear-gradient(135deg, #061630, #0d4e83 55%, #082745);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sap-confirm-page::before,
+    .sap-confirm-page::after {
+      position: absolute;
+      content: "";
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .sap-confirm-page::before {
+      width: 420px;
+      height: 420px;
+      right: -230px;
+      top: -145px;
+    }
+
+    .sap-confirm-page::after {
+      width: 500px;
+      height: 500px;
+      left: -300px;
+      bottom: -280px;
+    }
+
+    .sap-confirm-wrap {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Logo Superior (Opcional) */
+    .top-logo {
+      margin-bottom: 25px;
+    }
+    .top-logo img {
+      max-width: 260px;
+    }
+
+    /* Card Principal */
+    .sap-confirm-card {
+      width: 100%;
+      margin: 0 auto;
+      padding: 45px 48px 40px;
+      background: rgba(255,255,255,.98);
+      border-radius: 22px;
+      box-shadow: 0 20px 48px rgba(0,13,32,.36);
+    }
+
+    /* Ícone de Sucesso */
+    .sap-confirm-check {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      color: #fff;
+      background: linear-gradient(145deg, #22c4dc, #087ab5);
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(12,147,192,.32);
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .sap-confirm-title {
+      margin: 0;
+      color: #071a36;
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      font-weight: 800;
+    }
+
+    .sap-confirm-lead {
+      max-width: 580px;
+      margin: 18px auto 28px;
+      color: #415875;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .sap-confirm-lead strong {
+      color: #0f4c81;
+      font-size: 19px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Detalhes do Evento */
+    .sap-confirm-event {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      margin: 0 auto 32px;
+      padding: 20px 8px;
+      border-radius: 14px;
+      background: #f0f8fc;
+      border: 1px solid #d8eaf4;
+    }
+
+    .sap-confirm-event-item {
+      min-width: 0;
+      padding: 0 12px;
+      border-right: 1px solid #cfe3ee;
+    }
+
+    .sap-confirm-event-item:last-child {
+      border-right: 0;
+    }
+
+    .sap-confirm-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #54708f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .95px;
+      text-transform: uppercase;
+    }
+
+    .sap-confirm-value {
+      color: #071a36;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    /* Box da Oferta Exclusiva */
+    .sap-confirm-offer {
+      width: 100%;
+      margin: 0;
+      padding: 30px 26px;
+      color: #fff;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #072247, #0d5793);
+    }
+
+    .sap-confirm-gift {
+      margin: 0 0 10px;
+      color: #80e7fa;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .sap-confirm-offer-title {
+      max-width: 620px;
+      margin: 0 auto 22px;
+      color: #fff;
+      font-size: clamp(20px, 2.5vw, 26px);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .sap-confirm-cta {
+      display: inline-block;
+      padding: 18px 32px;
+      color: #08203f !important;
+      background: linear-gradient(135deg, #ffca4c, #ff9d16);
+      border-radius: 8px;
+      box-shadow: 0 8px 0 #d87800, 0 12px 20px rgba(0,0,0,.24);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-decoration: none !important;
+      transition: transform .18s ease, box-shadow .18s ease;
+      text-transform: uppercase;
+    }
+
+    .sap-confirm-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 0 #d87800, 0 15px 23px rgba(0,0,0,.25);
+    }
+
+    .sap-confirm-cta:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #d87800;
+    }
+
+    .sap-confirm-timer {
+      margin: 22px 0 0;
+      color: #d5ebfa;
+      font-size: 13px;
+    }
+
+    .sap-confirm-footer {
+      margin: 25px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+
+    /* WhatsApp Flutuante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+
+    .whatsapp-float img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 760px) {
+      .sap-confirm-page {
+        padding: 24px 14px 40px;
+      }
+
+      .sap-confirm-card {
+        padding: 30px 18px 25px;
+        border-radius: 18px;
+      }
+
+      .sap-confirm-event {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 18px 10px;
+      }
+
+      .sap-confirm-event-item {
+        border-right: 0;
+        padding: 0 8px;
+      }
+
+      .sap-confirm-offer {
+        padding: 24px 16px;
+      }
+
+      .sap-confirm-cta {
+        padding: 16px 20px;
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="sap-confirm-page">
+    <section class="sap-confirm-wrap">
+
+      <!-- Logo Topo -->
+      <div class="top-logo">
+        <img src="https://d335luupugsy2.cloudfront.net/cms/files/633485/1789581922/$k809zgsrah" alt="Trainning Education">
+      </div>
+
+      <article class="sap-confirm-card">
+        <!-- Ícone de Check -->
+        <div class="sap-confirm-check" aria-hidden="true">✓</div>
+
+        <h1 class="sap-confirm-title">Vaga confirmada</h1>
+
+        <p class="sap-confirm-lead">
+          <strong>Sua vaga está garantida!</strong>
+          Obrigado por se inscrever. Você receberá o link de acesso no seu e-mail em breve.
+          Guarde este e-mail — ele é sua entrada para a aula.
+        </p>
+
+        <!-- Detalhes do Evento -->
+        <div class="sap-confirm-event" aria-label="Detalhes da live">
+          <div class="sap-confirm-event-item">
+            <span class="sap-confirm-label">Data</span>
+            <span class="sap-confirm-value">03 de Outubro de 2026</span>
+          </div>
+
+          <div class="sap-confirm-event-item">
+            <span class="sap-confirm-label">Horário</span>
+            <span class="sap-confirm-value">9:00 às 13:00</span>
+          </div>
+
+          <div class="sap-confirm-event-item">
+            <span class="sap-confirm-label">Formato</span>
+            <span class="sap-confirm-value">100% online ao vivo</span>
+          </div>
+        </div>
+
+        <!-- Box de Oferta / Upsell Kiwify -->
+        <section class="sap-confirm-offer">
+          <p class="sap-confirm-gift">🎁 Oferta exclusiva para participantes</p>
+
+          <h2 class="sap-confirm-offer-title">
+            Complete sua experiência com certificado digital,
+            materiais práticos e acesso à gravação.
+          </h2>
+
+          <a class="sap-confirm-cta" href="https://pay.kiwify.com.br/a651ZzU" target="_blank" rel="noopener noreferrer">
+            QUERO GARANTIR O DESCONTO&nbsp; →
+          </a>
+
+          <p class="sap-confirm-timer">⏱ Condição válida por tempo limitado</p>
+        </section>
+      </article>
+
+      <p class="sap-confirm-footer">Trainning Education</p>
+    </section>
+  </main>
+
+  <!-- Botão Flutuante do WhatsApp -->
+  <a href="https://wa.me/551131712002?text=Ol%C3%A1%2C+acabei+de+me+inscrever+na+Live+SAP+e+gostaria+de+mais+informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <img src="https://d335luupugsy2.cloudfront.net/cms/files/1446/1588875979/$5u0ndp8vgxo" alt="WhatsApp">
+  </a>
+
+</body>
+</html>

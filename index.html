@@ -1005,12 +1005,11 @@
             submitBtn.textContent = "INSCRIÇÃO CONFIRMADA!";
             form.reset();
 
-            // Se houver redirect configurado
-            if (result.redirect_url) {
-              setTimeout(() => {
-                window.location.href = result.redirect_url;
-              }, 1500);
-            }
+            // Redirecionamento automático para a página de agradecimento:
+            const targetRedirect = result.redirect_url || "/obrigado.html";
+            setTimeout(() => {
+              window.location.href = targetRedirect;
+            }, 1200);
           } else {
             throw new Error(result.message || "Erro ao processar inscrição.");
           }
