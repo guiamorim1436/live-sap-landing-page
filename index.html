@@ -10,7 +10,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Raleway:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Oswald:wght@500;700&family=Raleway:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* CSS Reset */
@@ -39,6 +39,7 @@
     .bricks--page {
       width: 100%;
       overflow-x: hidden;
+      position: relative;
     }
 
     .bricks--section {
@@ -94,8 +95,8 @@
       flex-wrap: wrap;
       justify-content: space-around;
       width: 100%;
-      max-width: 501px;
-      margin: 15px 0;
+      max-width: 400px;
+      margin: 10px 0;
       gap: 15px;
     }
 
@@ -107,15 +108,15 @@
     }
 
     .counter-column span.value {
-      color: #a9d9ef;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 44px;
+      color: #3bbcff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 46px;
       font-weight: bold;
       line-height: 1;
     }
 
     .counter-column span.label {
-      color: #60c8dc;
+      color: #5bd3ff;
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
       margin-top: 4px;
@@ -436,7 +437,7 @@
 
     .feature-img-wrapper img {
       border: 1px solid #e5e7eb;
-      border-radius: 24px;
+      border-radius: 28px;
       box-shadow: 0 12px 24px rgba(0,0,0,0.08);
       max-width: 436px;
       width: 100%;
@@ -484,15 +485,15 @@
     }
 
     .curriculum-card .icon-box {
-      font-size: 32px;
-      margin-bottom: 14px;
+      font-size: 34px;
+      margin-bottom: 12px;
     }
 
     .curriculum-card h4 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
-      color: #ffffff;
+      color: rgb(176, 220, 254);
       margin-bottom: 12px;
       line-height: 1.25;
     }
@@ -500,9 +501,9 @@
     .curriculum-card p {
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
-      color: #d1d5db;
+      color: #ffffff;
       line-height: 1.45;
-      max-width: 260px;
+      max-width: 280px;
       margin: 0 auto;
     }
 
@@ -593,6 +594,48 @@
       max-width: 144px;
       margin: 0 auto;
       text-align: center;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      animation: whatsapp-shake 10s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+
+    .whatsapp-float img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes whatsapp-shake {
+      4.5%, 10.5% { transform: translate(0px, 0px) rotate(0deg); }
+      5% { transform: translate(1px, 1px) rotate(0deg); }
+      5.5% { transform: translate(-1px, -2px) rotate(-1deg); }
+      6% { transform: translate(-3px, 0px) rotate(1deg); }
+      6.5% { transform: translate(3px, 2px) rotate(0deg); }
+      7% { transform: translate(1px, -1px) rotate(1deg); }
+      7.5% { transform: translate(-1px, 2px) rotate(-1deg); }
+      8% { transform: translate(-3px, 1px) rotate(0deg); }
+      8.5% { transform: translate(3px, 1px) rotate(-1deg); }
+      9% { transform: translate(-1px, -1px) rotate(1deg); }
+      9.5% { transform: translate(1px, 2px) rotate(0deg); }
+      10% { transform: translate(1px, -2px) rotate(-1deg); }
     }
   </style>
 </head>
@@ -765,7 +808,6 @@
               <li><span class="check-icon">✓</span> Interface moderna e intuitiva</li>
               <li><span class="check-icon">✓</span> Analytics em tempo real</li>
               <li><span class="check-icon">✓</span> Processos automatizados</li>
-              <li><span class="check-icon">✓</span> Integração com IA</li>
             </ul>
           </div>
 
@@ -789,21 +831,21 @@
 
         <div class="cards-row">
           <div class="curriculum-card">
-            <div class="icon-box">🎯</div>
-            <h4>Fundamentos<br>SAP S/4HANA</h4>
-            <p>Visão completa da plataforma e suas vantagens competitivas</p>
+            <div class="icon-box">🎓</div>
+            <h4>Conhecer o SAP S/4HANA na prática</h4>
+            <p>e entender como ele é utilizado nos processos de uma empresa.</p>
           </div>
 
           <div class="curriculum-card">
-            <div class="icon-box">☁️</div>
-            <h4>SAP Business<br>Technology Platform</h4>
-            <p>Arquitetura, integração e os 5 pilares da plataforma de nuvem da SAP</p>
+            <div class="icon-box">🛒</div>
+            <h4>Compreender e mapear um processo de compras no SAP</h4>
+            <p>entendendo como as etapas se conectam dentro do sistema.</p>
           </div>
 
           <div class="curriculum-card">
-            <div class="icon-box">⚡</div>
-            <h4>Workshop<br>Prático</h4>
-            <p>Simulações e exercícios práticos de implementação</p>
+            <div class="icon-box">📝</div>
+            <h4>Aplicar o conhecimento em uma atividade prática</h4>
+            <p>tendo uma visão mais clara de como funciona o ambiente SAP no dia a dia.</p>
           </div>
         </div>
       </div>
@@ -860,6 +902,11 @@
       </div>
     </section>
 
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/551131712002?text=Ol%C3%A1%2C+estou+no+site+da+Trainning+e+gostaria+de+informa%C3%A7%C3%B5es+sobre+cursos." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Abrir WhatsApp">
+      <img src="https://d335luupugsy2.cloudfront.net/cms/files/1446/1588875979/$5u0ndp8vgxo" alt="WhatsApp">
+    </a>
+
   </div>
 
   <!-- Scripts -->
@@ -876,8 +923,8 @@
       const minuteElement = document.getElementById("c-minutes");
       const secondElement = document.getElementById("c-seconds");
 
-      // Data alvo
-      const targetDate = new Date("2026-10-03T09:00:00-03:00").getTime();
+      // Data alvo atualizada
+      const targetDate = new Date("2026-10-03T09:00:53-03:00").getTime();
 
       function updateCounter() {
         const now = new Date().getTime();
@@ -905,7 +952,7 @@
       updateCounter();
       setInterval(updateCounter, 1000);
 
-      // 2. Máscara de Telefone
+      // 2. Máscara de Telefone Celular
       const phoneInput = document.getElementById("f-phone");
       phoneInput.addEventListener("input", function(e) {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
