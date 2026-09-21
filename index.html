@@ -963,7 +963,23 @@
         }
       });
 
-      // 3. Submissão do Formulário para a API da Vercel
+      // 3. Captura e persistência de parâmetros de UTM
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+      const utmData = {};
+
+      utmFields.forEach(field => {
+        const val = urlParams.get(field);
+        if (val) {
+          sessionStorage.setItem(field, val);
+          utmData[field] = val;
+        } else {
+          const stored = sessionStorage.getItem(field);
+          if (stored) utmData[field] = stored;
+        }
+      });
+
+      // 4. Submissão do Formulário para a API da Vercel
       const form = document.getElementById("lead-form");
       const submitBtn = document.getElementById("btn-submit");
       const feedback = document.getElementById("form-feedback");
@@ -985,7 +1001,8 @@
           city: document.getElementById("f-city").value,
           cf_momento_profissional: document.getElementById("f-moment").value,
           source: "Landing Page Live SAP",
-          submitted_at: new Date().toISOString()
+          submitted_at: new Date().toISOString(),
+          ...utmData
         };
 
         try {

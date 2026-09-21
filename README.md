@@ -1,61 +1,60 @@
 # Landing Page - Live SAP S/4HANA (Clone 100% Fiel)
 
-Clone da página [live-sap-03-10-26](https://lp.trainning.com.br/live-sap-03-10-26), otimizado para deploy imediato no **Vercel** e integração direta com a sua plataforma via API.
+Clone da página [live-sap-03-10-26](https://lp.trainning.com.br/live-sap-03-10-26) com:
+- Design e tipografia 100% fiéis
+- Contador regressivo em tempo real
+- Captura e persistência automática de parâmetros UTM (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`)
+- Envio direto para o CRM via Vercel Serverless Function com autenticação `x-api-key`
+- Redirecionamento automático para a página de confirmação/upsell Kiwify (`obrigado.html`)
 
 ---
 
-## 🚀 Como Subir para o GitHub e Vercel
+## 📡 Integração com o CRM da Trainning
 
-### 1. Inicializar o Git e Enviar para o GitHub
-
-No terminal, dentro da pasta `live-sap-landing-page`:
-
-```bash
-cd "live-sap-landing-page"
-git init
-git add .
-git commit -m "feat: landing page clone 100% fiel com vercel serverless function"
-git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-git push -u origin main
-```
-
-### 2. Conectar na Vercel
-
-1. Acesse [vercel.com](https://vercel.com) e clique em **"Add New..." > "Project"**.
-2. Importe o repositório que acabou de criar no GitHub.
-3. Em **Environment Variables**, adicione:
-   - `PLATFORM_API_URL`: A URL do endpoint da sua plataforma que receberá o lead (ex: `https://sua-plataforma.com/api/leads`).
-   - `PLATFORM_API_KEY`: (Opcional) Token de autorização Bearer para autenticar o envio.
-   - `REDIRECT_AFTER_SUBMIT_URL`: (Opcional) URL para onde redirecionar o usuário após o cadastro.
-4. Clique em **Deploy**. Pronto! Sua página estará no ar com HTTPS e CDN global.
-
----
-
-## 📡 Payload Enviado para sua API
-
-Quando o usuário clica em **"QUERO PARTICIPAR GRATUITAMENTE"**, o front-end envia um `POST /api/subscribe`, que processa no back-end da Vercel e dispara o seguinte JSON para a sua plataforma (`PLATFORM_API_URL`):
+- **Endpoint:** `https://api.trainning.com.br/functions/v1/api-leads`
+- **Header:** `x-api-key: <CRM_API_KEY>`
+- **Payload enviado:**
 
 ```json
 {
-  "name": "Nome do Usuário",
-  "email": "usuario@empresa.com",
-  "company": "Nome da Empresa",
-  "job_title": "Cargo",
-  "phone": "11999999999",
-  "phone_formatted": "(11) 99999-9999",
-  "city": "São Paulo",
-  "momento_profissional": "Transição de carreira",
-  "source": "Landing Page Live SAP",
-  "submitted_at": "2026-09-17T18:45:00.000Z"
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "telefone": "11999998888",
+  "empresa": "Acme Ltda",
+  "cargo": "Analista de TI",
+  "sede_cidade": "São Paulo",
+  "seniority": "Transição de carreira",
+  "curso_interesse": "SAP S/4HANA",
+  "course_format": "Mentorado (Ao Vivo)",
+  "form_name": "Inscrição Live SAP S/4HANA",
+  "origem": "google",
+  "tags": [
+    "live-sap",
+    "landing-page",
+    "sap-2026"
+  ],
+  "utm_source": "google",
+  "utm_medium": "cpc",
+  "utm_campaign": "sap-2026",
+  "utm_content": "anuncio-feed",
+  "utm_term": "curso sap"
 }
 ```
 
 ---
 
-## 📁 Estrutura de Arquivos
+## 🚀 Como Configurar na Vercel
 
-- `index.html`: Landing page completa com design 100% fiel, cronômetro regressivo e máscara de telefone.
-- `api/subscribe.js`: Vercel Serverless Function que recebe os dados do formulário e encaminha para a sua API sem expor chaves no front-end.
-- `package.json`: Configurações do projeto.
-- `.env.example`: Exemplo de configuração de variáveis de ambiente.
+1. No painel do seu projeto na [Vercel](https://vercel.com):
+2. Vá em **Settings > Environment Variables** e adicione:
+   - `CRM_API_KEY`: A sua API key da Trainning (será enviada no header `x-api-key`).
+   - `CRM_API_URL`: *(Opcional, já vem pré-configurado com https://api.trainning.com.br/functions/v1/api-leads)*.
+3. Faça o redeploy ou dê um push no repositório.
+
+---
+
+## 🎯 Rastreamento de UTMs
+
+A captura de UTMs funciona de forma persistente:
+1. Quando o lead acessa a página com links de campanha (ex: `/?utm_source=facebook&utm_campaign=live-outubro`), os dados são capturados e salvos no `sessionStorage`.
+2. Mesmo se o lead navegar ou recarregar a página, as UTMs originais são mantidas e enviadas junto ao cadastro para o CRM.
