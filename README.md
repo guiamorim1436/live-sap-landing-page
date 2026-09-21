@@ -25,19 +25,15 @@ Clone da página [live-sap-03-10-26](https://lp.trainning.com.br/live-sap-03-10-
   "sede_cidade": "São Paulo",
   "seniority": "Transição de carreira",
   "curso_interesse": "SAP S/4HANA",
-  "course_format": "Mentorado (Ao Vivo)",
+  "course_format": "",
   "form_name": "Inscrição Live SAP S/4HANA",
-  "origem": "google",
+  "origem": "LP Live SAP S/4HANA",
+  "observacoes": "Nome: João Silva\nEmpresa: Acme Ltda\nTelefone: 11999998888\nMomento da carreira: Transição de carreira\nCargo: Analista de TI\nCidade: São Paulo",
   "tags": [
     "live-sap",
-    "landing-page",
-    "sap-2026"
+    "landing-page"
   ],
-  "utm_source": "google",
-  "utm_medium": "cpc",
-  "utm_campaign": "sap-2026",
-  "utm_content": "anuncio-feed",
-  "utm_term": "curso sap"
+  "utm_source": "LP Live SAP S/4HANA"
 }
 ```
 
