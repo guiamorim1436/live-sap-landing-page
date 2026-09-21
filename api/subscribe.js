@@ -73,7 +73,6 @@ export default async function handler(req, res) {
       origem: utm_source || "LP Live SAP S/4HANA",
       observacoes: observacoesTexto,
       obs: observacoesTexto,
-      notes: observacoesTexto,
       tags: [
         "live-sap",
         "landing-page",
@@ -88,8 +87,9 @@ export default async function handler(req, res) {
 
     console.log('[ENVIANDO LEAD PARA CRM]:', JSON.stringify(crmPayload, null, 2));
 
-    const CRM_URL = process.env.CRM_API_URL || 'https://api.trainning.com.br/functions/v1/api-leads';
-    const CRM_API_KEY = process.env.CRM_API_KEY || process.env.PLATFORM_API_KEY || '';
+    // Endpoint do CRM: prioriza ENV, com fallback direto para o endpoint Supabase da Trainning
+    const CRM_URL = process.env.CRM_API_URL || 'https://nobmaxndasqwzxzotkzj.supabase.co/functions/v1/api-leads';
+    const CRM_API_KEY = process.env.CRM_API_KEY || process.env.PLATFORM_API_KEY || 'tk_live_v2_p6yjvqbom2zbik2ir4rbfdbt.sODePJejOEPG3BszUxZLx4rGsuzx68m3blfydQVlz1fRP4VJ';
 
     const headers = {
       'Content-Type': 'application/json'

@@ -1023,6 +1023,7 @@
           if (response.ok && result.success !== false) {
             feedback.textContent = "✓ Inscrição realizada com sucesso! Redirecionando...";
             feedback.className = "form-feedback success";
+            feedback.style.display = "block";
             submitBtn.textContent = "INSCRIÇÃO CONFIRMADA!";
             form.reset();
 
@@ -1030,13 +1031,14 @@
             const targetRedirect = result.redirect_url || "/obrigado.html";
             setTimeout(() => {
               window.location.href = targetRedirect;
-            }, 1200);
+            }, 1000);
           } else {
             throw new Error(result.message || "Erro ao processar inscrição.");
           }
         } catch (error) {
           feedback.textContent = error.message || "Ocorreu um erro ao enviar. Tente novamente.";
           feedback.className = "form-feedback error";
+          feedback.style.display = "block";
           submitBtn.disabled = false;
           submitBtn.textContent = "QUERO PARTICIPAR GRATUITAMENTE";
         }
