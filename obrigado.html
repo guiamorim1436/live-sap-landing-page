@@ -181,6 +181,68 @@
       font-weight: 700;
     }
 
+    /* Bloco de acesso à Live no YouTube */
+    .sap-live-access {
+      width: 100%;
+      margin: 0 0 24px;
+      padding: 28px 24px;
+      border: 1px solid #cfe3ee;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f7fcff, #eaf6fc);
+      box-shadow: 0 10px 26px rgba(7, 34, 71, .08);
+    }
+
+    .sap-live-access-kicker {
+      margin: 0 0 8px;
+      color: #0d5793;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .55px;
+      text-transform: uppercase;
+    }
+
+    .sap-live-access-title {
+      margin: 0 auto 10px;
+      max-width: 680px;
+      color: #071a36;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .sap-live-access-text {
+      max-width: 680px;
+      margin: 0 auto 20px;
+      color: #415875;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .sap-live-access-btn {
+      display: inline-block;
+      padding: 17px 28px;
+      color: #fff !important;
+      background: linear-gradient(135deg, #ff2f2f, #c91414);
+      border-radius: 8px;
+      box-shadow: 0 8px 0 #8f0f0f, 0 12px 20px rgba(111, 10, 10, .20);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-decoration: none !important;
+      text-transform: uppercase;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .sap-live-access-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 0 #8f0f0f, 0 15px 23px rgba(111, 10, 10, .24);
+    }
+
+    .sap-live-access-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #8f0f0f;
+    }
+
     /* Box da Oferta Exclusiva */
     .sap-confirm-offer {
       width: 100%;
@@ -293,6 +355,16 @@
         padding: 0 8px;
       }
 
+      .sap-live-access {
+        padding: 22px 16px;
+      }
+
+      .sap-live-access-btn {
+        width: 100%;
+        padding: 16px 18px;
+        font-size: 14px;
+      }
+
       .sap-confirm-offer {
         padding: 24px 16px;
       }
@@ -344,6 +416,23 @@
             <span class="sap-confirm-value">100% online ao vivo</span>
           </div>
         </div>
+
+        <!-- Acesso direto à Live no YouTube -->
+        <section class="sap-live-access" aria-label="Acesso à live no YouTube">
+          <p class="sap-live-access-kicker">Seu acesso já está disponível</p>
+
+          <h2 class="sap-live-access-title">
+            Entre na página oficial da live e deixe tudo pronto para o dia 17 de outubro.
+          </h2>
+
+          <p class="sap-live-access-text">
+            Clique no botão abaixo para acessar a transmissão no YouTube. Assim, você já pode salvar o link, ativar o lembrete e garantir que não vai perder o início da aula ao vivo.
+          </p>
+
+          <a class="sap-live-access-btn" href="https://youtube.com/live/liwNSmhq9dg" target="_blank" rel="noopener noreferrer">
+            ACESSAR A LIVE NO YOUTUBE&nbsp; →
+          </a>
+        </section>
 
         <!-- Box de Oferta / Upsell Kiwify -->
         <section class="sap-confirm-offer">
