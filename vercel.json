@@ -1,6 +1,7 @@
 {
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/agradecimento-inscricao-live-sap-17-de-outubro", "destination": "/obrigado.html" },
     { "source": "/agradecimento-inscricao-live-sap-3-de-outubro", "destination": "/obrigado.html" },
     { "source": "/obrigado", "destination": "/obrigado.html" }
   ]
